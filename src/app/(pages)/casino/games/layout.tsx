@@ -15,13 +15,9 @@ const Layout = ({
             <ProviderSlider showTitle={false} />
             <div className="flex flex-col xl:flex-row w-full flex-grow overflow-y-auto xl:items-center">
                 <TagSlider />
-                <Suspense fallback={<div>Loading</div>}>
-                    <Search />
-                </Suspense>
+                <Search />
             </div>
-            <Suspense fallback={<div>cargando</div>}>
-                {children}
-            </Suspense>
+            {children}
         </main></div>
 }
 
