@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,11 +8,15 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'wallet-gradient': 'linear-gradient(to right, #021b79, #0575e6)',
+      },
       colors: {
-        background: "var(--background)",
+        background: "#000719",
         foreground: "var(--foreground)",
       },
     },
   },
   plugins: [],
-} satisfies Config;
+};
+export default config;

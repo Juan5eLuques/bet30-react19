@@ -17,5 +17,38 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  background: #0575e6;
+  background: -webkit-linear-gradient(to right, #021b79, #0575e6);
+  background: linear-gradient(to right, #021b79, #0575e6);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .scrollbar-track-purple-900\/10::-webkit-scrollbar-track {
+    background: rgba(2, 36, 131, 0.1);
+    border-radius: 3px;
+  }rgb
+  
+  .scrollbar-thumb-purple-600\/50::-webkit-scrollbar-thumb {
+    background: rgba(2, 36, 131, 0.5);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thumb-purple-600\/70::-webkit-scrollbar-thumb {
+    background: rgba(2, 36, 131, 0.7);
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
 }
