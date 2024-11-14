@@ -60,7 +60,7 @@ export default function Page() {
     return (
         <div>
             <GamesList isLoading={isLoading} gameList={games} />
-            {hasMoreGames && <ButtonVerMas callback={handleChangePage} />}
+            {hasMoreGames && <ButtonVerMas action={handleChangePage} />}
         </div>
     );
 }
