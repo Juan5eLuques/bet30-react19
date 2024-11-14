@@ -16,7 +16,7 @@ export default function Home() {
       <main className="flex flex-col px-2 md:px-4 pb-3">
         <GamesHome />
         <CategoriesBanner />
-        <ProviderSlider IconElement={<ProviderIcon />} />
+        <ProviderSlider context="home" IconElement={<ProviderIcon />} />
       </main>
     </div >
   );

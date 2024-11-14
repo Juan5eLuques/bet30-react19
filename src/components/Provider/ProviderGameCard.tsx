@@ -8,11 +8,6 @@ interface Props {
 
 const ProviderGameCard: React.FC<Props> = ({ title, svgName, href }) => {
 
-    useEffect(() => {
-
-    }, [])
-
-
     return (
         <a className="cursor-pointer" href={href}>
             <button className="gap-2 items-center justify-center rounded-3xl h-10">

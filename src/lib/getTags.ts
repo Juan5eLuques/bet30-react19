@@ -4,9 +4,9 @@ type ListTags = Tags;
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export async function getTags(): Promise<ListTags | null > {
+export async function getTags(context : string): Promise<ListTags | null > {
     try {
-        const response = await fetch(`${API_URL}/api/casino/nav/tags`);
+        const response = await fetch(`${API_URL}/api/${context}/nav/tags`);
         if (!response.ok) {
             throw new Error(`Error fetching tags: ${response.statusText}`);
         }

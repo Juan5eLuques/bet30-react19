@@ -1,11 +1,11 @@
 import { ListProviders } from "@/types/providers";
 
-
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export async function getProviders(): Promise<ListProviders> {
+
+export async function getProviders(context : string): Promise<ListProviders> {
     try {
-        const data = await fetch(`${API_URL}/api/home/nav/providers`);
+        const data = await fetch(`${API_URL}/api/${context}/nav/providers`);
 
         if (!data.ok) {
             throw new Error(`Error fetching providers: ${data.statusText}`);

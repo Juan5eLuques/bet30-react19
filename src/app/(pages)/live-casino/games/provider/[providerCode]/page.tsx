@@ -31,7 +31,7 @@ export default function Page() {
 
     // Generación de la URL para la llamada SWR
     const url = lastSegment
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/casino/games/provider/${lastSegment}?page=${page}`
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/live-casino/games/provider/${lastSegment}?page=${page}`
         : null;
 
     // Uso de SWR para obtener datos, guardando en cache
@@ -60,7 +60,7 @@ export default function Page() {
     return (
         <div>
             <GamesList isLoading={isLoading} gameList={games} />
-            {hasMoreGames && <ButtonVerMas action={handleChangePage} />}
+            {hasMoreGames && <ButtonVerMas callback={handleChangePage} />}
         </div>
     );
 }

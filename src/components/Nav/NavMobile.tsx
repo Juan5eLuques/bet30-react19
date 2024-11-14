@@ -24,13 +24,6 @@ const BottomNavigation: React.FC = () => {
     };
 
     useIsPath('')
-    const navItems: NavProps[] = [
-        { key: 1, title: "Slots", href: "casino" },
-        { key: 2, title: "Deportes", href: "sportsbook-ex" },
-        { key: 3, title: "Home", href: "/" },
-        { key: 4, title: "Casino online", href: "live-casino" },
-        { key: 5, title: "Crash", href: "crash" },
-    ];
 
     return (
         <div className="min-h-16 flex bg-[#030f2f] fixed bottom-0 w-screen justify-between items-center px-1 md:hidden">
@@ -120,7 +113,7 @@ const BottomNavigation: React.FC = () => {
                     className={`${useIsPath("live-casino") ? "border-top " : ""} w-20 flex justify-center items-center min-h-16`}
                 >
                     <Link
-                        href="/live-casino"
+                        href="/live-casino/games/tag/all"
                         className="cursor-pointer no-underline flex flex-col justify-center items-center"
                     >
                         <LiveSvg

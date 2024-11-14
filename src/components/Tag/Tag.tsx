@@ -2,55 +2,61 @@
 
 import Link from 'next/link'
 import React from 'react'
-import { Activity, Crown, Dice4, Gem, Star } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { TagComponent } from '@/types/tagComponent';
+import { Horse, SquareLogo, Cube, Club, Diamond, Spade, PokerChip, Brandy, Fire, Flower, NumberCircleSeven, Rocket } from "phosphor-react";
 
 interface Props {
     tag: TagComponent,
     index: number
+    context: string
 }
 
-const urlTag = (index: number) => {
-    switch (index) {
-        case 0:
-            return <Crown></Crown>
-        case 1:
-            return <Star></Star>
-        case 2:
-            return <Activity />
-        case 3:
-            return <Gem></Gem >
-        case 4:
-            return <Dice4 />
-        case 5:
-            return <Activity />
-        case 6:
-            return <Gem></Gem>
-        default: return <Crown></Crown>
+const urlTag = (tag: string, isActive: boolean) => {
+    const color = isActive ? '#FFFFFF' : undefined; // Blanco si activo, color por defecto si no
+
+    switch (tag) {
+        case 'all':
+            return <Fire size={24} weight="fill" color={color} />
+        case 'favorites':
+            return <Club size={24} weight="fill" color={color} />
+        case 'top':
+            return <Diamond size={24} weight="fill" color={color} />
+        case 'new':
+            return <Spade size={24} weight="fill" color={color} />
+        case 'slot':
+            return <PokerChip size={24} weight="fill" color={color} />
+        case 'bingo':
+            return <Brandy size={24} weight="fill" color={color} />
+        case 'table':
+            return <SquareLogo size={24} weight="fill" color={color} />
+        case 'crash':
+            return <Rocket size={24} weight="fill" color={color} />
+        case 'lottery':
+            return <Horse size={24} weight="fill" color={color} />
+        case 'virtual':
+            return <Cube size={24} weight="fill" color={color} />
+        case 'videopoker':
+            return <NumberCircleSeven size={24} weight="fill" color={color} />
+        case 'instant':
+            return <Flower size={24} weight="fill" color={color} />
+        default:
+            return <Flower size={24} weight="fill" color={color} />
     }
 };
 
-export const Tag = ({ tag, index }: Props) => {
-
-    const pathname = usePathname()
+export const Tag = ({ tag, index, context }: Props) => {
+    const pathname = usePathname();
+    const isActive = pathname === `/${context}/games/tag/${tag.code}`;
 
     return (
         <Link
             key={tag.code}
-            href={`/casino/games/tag/${tag.code}`}
-            className={`${pathname === `/casino/games/tag/${tag.code}` ? 'bg-wallet-gradient border border-[#046aff]' : 'border bg-[#030f2f] border-[rgb(18,33,75)] hover:border-[#030f2f]'} w-auto h-full flex-shrink-0 relative  rounded-full overflow-hidden  transition-all duration-300 snap-start group`}
+            href={`/${context}/games/tag/${tag.code}`}
+            className={`${isActive ? 'bg-wallet-gradient border border-[#046aff]' : 'border bg-[#030f2f] border-[rgb(18,33,75)] hover:border-[#030f2f]'} md:w-[100px] sm:h-[50px] flex justify-center items-center w-auto h-full flex-shrink-0 relative rounded-full overflow-hidden transition-all duration-300 snap-start group`}
         >
             <div className="w-full h-auto relative flex items-center justify-center px-3 py-2 md:p-2 text-nowrap scrollbar-none gap-2">
-                {/* <Image
-            src={urlTag(index)}
-            key={tag.code}
-            alt={tag.name}
-            width={70}
-            height={70}
-            className="h-6 w-6 object-contain transition-all duration-300 "
-        /> */}
-                {urlTag(index)}
+                {urlTag(tag.code, isActive)}
                 <span className='text-sm'>{tag.name}</span>
             </div>
         </Link>

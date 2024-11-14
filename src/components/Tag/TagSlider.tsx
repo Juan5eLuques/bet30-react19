@@ -2,9 +2,14 @@ import { getTags } from '@/lib/getTags';
 import React from 'react';
 import { Tag } from './Tag';
 
-export async function TagSlider() {
+interface ProviderSliderProps {
+    context: 'home' | 'casino' | 'live-casino'
+}
 
-    const data = await getTags();
+
+export async function TagSlider({ context }: ProviderSliderProps) {
+
+    const data = await getTags(context);
 
     // Verificar si data es null
     if (data === null) {
@@ -22,7 +27,7 @@ export async function TagSlider() {
         <div className="py-1">
             <div className="scrollbar-none flex gap-1 pt-1 sm:gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-thin scrollbar-track-purple-900/10 scrollbar-thumb-purple-600/50 hover:scrollbar-thumb-purple-600/70">
                 {tagArray.map((tag, index) => (
-                    <Tag index={index} tag={tag} key={tag.code}></Tag>
+                    <Tag context={context} index={index} tag={tag} key={tag.code}></Tag>
                 ))}
             </div>
         </div>

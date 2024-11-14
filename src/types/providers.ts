@@ -13,6 +13,7 @@ export interface Provider {
     name: string,
     gameCode: string,
     sortOrder: string
+    context? : string
 }
 
 export type ListProviders = ProviderComponent[]
