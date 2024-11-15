@@ -8,12 +8,15 @@ interface Props {
   src: string;
 }
 
+const NEXT_PUBLIC_CDN_BASE_URL = process.env.NEXT_PUBLIC_CDN_BASE_URL;
+
+
 const Card: FC<Props> = ({ href, title, src }) => {
   return (
     <div className="h-full shadow-sm overflow-hidden flex flex-col justify-center cursor-pointer rounded-xl relative group">
       <div className="overflow-hidden flex justify-center items-center relative rounded-xl div-image-container">
         <Image
-          src={`https://a7a.nyc3.cdn.digitaloceanspaces.com/userFiles/games.a7a.club/${src}`}
+          src={`${NEXT_PUBLIC_CDN_BASE_URL}/userFiles/games.a7a.club/${src}`}
           alt={title}
           width={200}
           height={200}

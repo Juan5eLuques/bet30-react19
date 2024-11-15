@@ -6,6 +6,8 @@ import React from 'react'
 import { ProviderComponent } from '@/types/providers'
 import { usePathname } from 'next/navigation';
 
+const NEXT_PUBLIC_CDN_BASE_URL = process.env.NEXT_PUBLIC_CDN_BASE_URL;
+
 export const Provider = ({ name, code, gameCode, sortOrder, context }: ProviderComponent) => {
 
     const pathname = usePathname()
@@ -17,7 +19,7 @@ export const Provider = ({ name, code, gameCode, sortOrder, context }: ProviderC
         >
             <div className="w-[80px] h-[40px] md:w-[100px] sm:h-[50px] relative flex items-center justify-center p-2 md:p-2">
                 <Image
-                    src={`https://a7a.nyc3.digitaloceanspaces.com/media/icons/providers-new/${code}.png`}
+                    src={`${NEXT_PUBLIC_CDN_BASE_URL}/media/icons/providers-new/${code}.png`}
                     key={code}
                     alt={name}
                     width={70}

@@ -27,7 +27,7 @@ const Navigation: React.FC = () => {
   const navItems: NavProps[] = [
     { title: "Home", href: "", isActive: '' },
     { title: "Slots", href: "casino/games/tag/all", isActive: 'casino' },
-    { title: "Casino online", href: "live-casino", isActive: 'live-casino' },
+    { title: "Casino online", href: "live-casino/games/tag/all", isActive: 'live-casino' },
     { title: "Deportes", href: "sportsbook-ex", isActive: 'sportsbook-ex' },
   ];
 

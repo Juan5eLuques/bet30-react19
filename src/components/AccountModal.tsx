@@ -2,15 +2,7 @@
 
 import { User } from 'lucide-react'
 import { useState } from 'react'
-
-
-interface Transaction {
-  id: string
-  type: 'Depósito' | 'Retiro'
-  amount: number
-  balance: number
-  date: string
-}
+import TransactionList from './UserInformation/TransactionList'
 
 interface Bet {
   id: string
@@ -55,11 +47,6 @@ export default function AccountModal() {
     setNewPassword('')
     setConfirmPassword('')
   }
-
-  const transactions: Transaction[] = [
-    { id: '2260809', type: 'Depósito', amount: 2000.00, balance: 2052.77, date: '9/17, 11:04' },
-    { id: '1572417', type: 'Depósito', amount: 2000.00, balance: 2000.17, date: '8/15, 16:21' },
-  ]
 
   const bets: Bet[] = [
     {
@@ -276,33 +263,7 @@ export default function AccountModal() {
                   )}
 
                   {activeTab === 'transacciones' && (
-                    <div className="mt-4 space-y-4">
-                      <h3 className="text-lg font-semibold text-[#5fa8d3]">Transacciones Recientes</h3>
-                      {transactions.map((transaction) => (
-                        <div key={transaction.id} className="bg-[#030f2f] rounded-lg p-4 flex items-center justify-between border border-[#021b79]">
-                          <div className="flex items-center space-x-4">
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${transaction.type === 'Depósito' ? 'bg-[#22c55e]' : 'bg-red-500'
-                              }`}>
-                              {transaction.type === 'Depósito' ? (
-                                <span className="text-white text-lg">+</span>
-                              ) : (
-                                <span className="text-white text-lg">-</span>
-                              )}
-                            </div>
-                            <div>
-                              <p className="font-medium text-[#5fa8d3]">{transaction.type} #{transaction.id}</p>
-                              <p className="text-sm text-white">
-                                Monto: ${transaction.amount.toFixed(2)}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <p className="font-medium text-[#5fa8d3]">${transaction.balance.toFixed(2)}</p>
-                            <p className="text-sm text-white">{transaction.date}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                    <TransactionList />
                   )}
                 </div>
               </div>
