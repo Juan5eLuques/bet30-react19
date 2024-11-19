@@ -1,6 +1,7 @@
 'use client'
 
 import { Transaction, TransactionsData } from "@/types/Transactions";
+import { ConvertDate } from "@/utils/dateFunctions";
 import { CaretRight } from "phosphor-react";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
@@ -71,25 +72,31 @@ export default function TransactionList() {
             {transactions.length > 0 ? (
                 transactions.map((transaction) => (
                     <div key={transaction.id} className="bg-[#030f2f] rounded-lg p-4 flex items-center justify-between border border-[#021b79]">
-                        <div className="flex items-center space-x-4">
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${transaction.transaction_type === 4 ? 'bg-[#22c55e]' : 'bg-red-500'}`}>
+                        <div className="flex items-center space-x-4 w-full">
+                            <div className={`w-8 h-8  rounded-full flex items-center justify-center ${transaction.transaction_type === 4 ? 'bg-[#22c55e]' : 'bg-red-500'}`}>
                                 {transaction.transaction_type === 1 ? (
                                     <span className="text-white text-lg">+</span>
                                 ) : (
                                     <span className="text-white text-lg">-</span>
                                 )}
                             </div>
-                            <div>
-                                <p className="font-medium text-[#5fa8d3]">{TypeTransaction(transaction.transaction_type)} <br /> #{transaction.id}</p>
+                            <div className="w-full">
+                                <div className="flex justify-between w-full">
+                                    <p className="flex font-medium text-[#5fa8d3]">{TypeTransaction(transaction.transaction_type)}</p>
+                                    <p className="flex font-medium text-[#5fa8d3]" ># {transaction.id}</p>
+
+                                </div>
                                 <p className="text-sm text-white">
                                     Monto: ${transaction.amount}
                                 </p>
+                                <div className="text-left">
+                                    <p className="font-medium text-[#5fa8d3] flex gap-2 items-center">${transaction.balance_before} <CaretRight />{transaction.balance_after}</p>
+                                    <p className="text-sm text-white">{ConvertDate(transaction.created_at)}</p>
+                                </div>
                             </div>
+
                         </div>
-                        <div className="text-right">
-                            <p className="font-medium text-[#5fa8d3] flex gap-2 justify-center items-center">${transaction.balance_before} <CaretRight />{transaction.balance_after}</p>
-                            <p className="text-sm text-white">{transaction.created_at}</p>
-                        </div>
+
                     </div>
                 ))
             ) : (

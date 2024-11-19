@@ -138,7 +138,7 @@ export default function AccountModal() {
 
       {isOpen && (
         <div className="fixed inset-0 bg-[#363636] bg-opacity-75 flex items-center justify-center p-4 z-50">
-          <div className="bg-gradient-to-br from-[#030f2f] to-[#021b79] text-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto scrollbar-thin scrollbar-track-purple-900/10 scrollbar-thumb-purple-600/50 hover:scrollbar-thumb-purple-600/70 ">
+          <div className="scrollbar-none bg-gradient-to-br from-[#030f2f] to-[#021b79] text-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto scrollbar-thin scrollbar-track-purple-900/10 scrollbar-thumb-purple-600/50 hover:scrollbar-thumb-purple-600/70 ">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-[#5fa8d3]">Cuenta</h2>
