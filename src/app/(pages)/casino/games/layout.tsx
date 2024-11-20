@@ -13,7 +13,7 @@ export default async function Layout({
         <Hero urlBanner="/images/banners/slots-banner.png" />
         <main className="flex flex-col px-2 md:px-4 py-2">
             <ProviderSlider showTitle={false} context="casino" />
-            <div className="flex flex-col xl:flex-row w-full flex-grow overflow-y-auto xl:items-center">
+            <div className="flex flex-col md:flex-row xl:w-full scrollbar-thin flex-grow overflow-y-auto xl:items-center">
                 <TagSlider context="casino" />
                 <Search />
             </div>

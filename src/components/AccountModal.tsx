@@ -3,22 +3,8 @@
 import { User } from 'lucide-react'
 import { useState } from 'react'
 import TransactionList from './UserInformation/TransactionList'
-
-interface Bet {
-  id: string
-  type: 'Combinada'
-  status: 'Ganado' | 'Perdido'
-  quota: number
-  date: string
-  amount: number
-  lostAmount: number
-  matches: {
-    status: 'Ganado' | 'Perdido'
-    teams: string
-    startTime: string
-    bet: string
-  }[]
-}
+import BetList from './UserInformation/BetList'
+import SpinsList from './UserInformation/SpinList'
 
 interface Spin {
   id: string
@@ -41,94 +27,11 @@ export default function AccountModal() {
 
   const handlePasswordChange = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Cambio de contraseña:', { currentPassword, newPassword, confirmPassword })
     setIsPasswordModalOpen(false)
     setCurrentPassword('')
     setNewPassword('')
     setConfirmPassword('')
   }
-
-  const bets: Bet[] = [
-    {
-      id: '23339',
-      type: 'Combinada',
-      status: 'Perdido',
-      quota: 1.85,
-      date: '8/22, 20:01',
-      amount: 1616.00,
-      lostAmount: 1616,
-      matches: [
-        {
-          status: 'Perdido',
-          teams: 'Belgrano VS Athletico Paranaense',
-          startTime: '8/22, 20:01',
-          bet: '1X2Belgrano(1.54)'
-        },
-        {
-          status: 'Ganado',
-          teams: 'Sao Paulo SP VS Nacional Montevideo',
-          startTime: '8/22, 20:01',
-          bet: '1X2Sao Paulo SP(1.2)'
-        }
-      ]
-    },
-    {
-      id: '14127',
-      type: 'Combinada',
-      status: 'Perdido',
-      quota: 7.47,
-      date: '7/15, 14:48',
-      amount: 107.33,
-      lostAmount: 107.33,
-      matches: [
-        {
-          status: 'Ganado',
-          teams: 'Instituto Cordoba VS CA Independiente',
-          startTime: '7/15, 14:48',
-          bet: '1X2Instituto Cordoba(2.49)'
-        }
-      ]
-    }
-  ]
-
-  const spins: Spin[] = [
-    {
-      id: '1211198824',
-      game: 'Cosmic Cash',
-      date: '9/19, 22:37',
-      amount: 9.6,
-      balanceBefore: 337.57,
-      balanceAfter: 327.97,
-      status: 'Perdido'
-    },
-    {
-      id: '1211198563',
-      game: 'Cosmic Cash',
-      date: '9/19, 22:37',
-      amount: 9.6,
-      balanceBefore: 347.17,
-      balanceAfter: 337.57,
-      status: 'Perdido'
-    },
-    {
-      id: '1211198288',
-      game: 'Cosmic Cash',
-      date: '9/19, 22:37',
-      amount: 9.6,
-      balanceBefore: 356.77,
-      balanceAfter: 347.17,
-      status: 'Perdido'
-    },
-    {
-      id: '1211198018',
-      game: 'Cosmic Cash',
-      date: '9/19, 22:37',
-      amount: 12.0,
-      balanceBefore: 356.77,
-      balanceAfter: 368.77,
-      status: 'Ganado'
-    }
-  ]
 
   return (
     <div className='flex'>
@@ -197,70 +100,9 @@ export default function AccountModal() {
                     ))}
                   </div>
 
-                  {activeTab === 'apuestas' && (
-                    <div className="mt-4 space-y-4">
-                      <h3 className="text-lg font-semibold text-[#5fa8d3]">Últimas Apuestas</h3>
-                      {bets.map((bet) => (
-                        <div key={bet.id} className="bg-[#030f2f] rounded-lg p-4 space-y-2 border border-[#021b79]">
-                          <div className="flex justify-between items-center">
-                            <div className="flex space-x-2">
-                              <span className={`px-2 py-1 text-xs font-semibold rounded ${bet.type === 'Combinada' ? 'bg-[#0575e6] text-white' : 'bg-[#021b79] text-[#5fa8d3]'
-                                }`}>
-                                {bet.type}
-                              </span>
-                              <span className={`px-2 py-1 text-xs font-semibold rounded ${bet.status === 'Ganado' ? 'bg-green-600 text-white' : 'bg-[#dc2626] text-white'
-                                }`}>
-                                {bet.status}
-                              </span>
-                            </div>
-                            <span className="text-sm font-medium text-[#5fa8d3]">#{bet.id}</span>
-                          </div>
-                          <div className="text-sm">
-                            <p>Cuota({bet.quota})</p>
-                            <p>Tiempo de Apuesta: {bet.date}</p>
-                            <p>Monto: ${bet.amount.toFixed(2)}</p>
-                            <p>Cantidad Perdida: ${bet.lostAmount.toFixed(2)}</p>
-                          </div>
-                          <div className="space-y-2">
-                            {bet.matches.map((match, index) => (
-                              <div key={index} className="bg-[#021b79] p-2 rounded">
-                                <div className={`text-xs font-semibold ${match.status === 'Ganado' ? 'text-[#4ade80]' : 'text-[#f87171]'
-                                  }`}>
-                                  {match.status}
-                                </div>
-                                <div className="text-sm">{match.teams}</div>
-                                <div className="text-xs text-[#5fa8d3]">Hora de Inicio: {match.startTime}</div>
-                                <div className="text-sm font-medium">{match.bet}</div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  {activeTab === 'apuestas' && <BetList />}
 
-                  {activeTab === 'spins' && (
-                    <div className="mt-4 space-y-4">
-                      <h3 className="text-lg font-semibold text-[#5fa8d3]">Spins Recientes</h3>
-                      {spins.map((spin) => (
-                        <div key={spin.id} className="bg-[#030f2f] rounded-lg p-4 space-y-2 border border-[#021b79]">
-                          <div className="flex justify-between items-center">
-                            <span className={`px-2 py-1 text-xs font-semibold rounded ${spin.status === 'Ganado' ? 'bg-[#16a34a] text-white' : 'bg-[#dc2626] text-white'
-                              }`}>
-                              Spin
-                            </span>
-                            <span className="text-sm font-medium text-[#5fa8d3]">#{spin.id}</span>
-                          </div>
-                          <div className="text-sm">
-                            <p>{spin.game}</p>
-                            <p>Tiempo de Spin: {spin.date}</p>
-                            <p>Spin: ${spin.amount.toFixed(2)}</p>
-                            <p>Saldo: ${spin.balanceBefore.toFixed(2)} -&gt; ${spin.balanceAfter.toFixed(2)}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  {activeTab === 'spins' && <SpinsList />}
 
                   {activeTab === 'transacciones' && (
                     <TransactionList />

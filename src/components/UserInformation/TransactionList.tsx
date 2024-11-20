@@ -73,8 +73,8 @@ export default function TransactionList() {
                 transactions.map((transaction) => (
                     <div key={transaction.id} className="bg-[#030f2f] rounded-lg p-4 flex items-center justify-between border border-[#021b79]">
                         <div className="flex items-center space-x-4 w-full">
-                            <div className={`w-8 h-8  rounded-full flex items-center justify-center ${transaction.transaction_type === 4 ? 'bg-[#22c55e]' : 'bg-red-500'}`}>
-                                {transaction.transaction_type === 1 ? (
+                            <div className={`w-8 rounded-full flex items-center justify-center ${transaction.transaction_type === 4 ? 'bg-[#22c55e]' : 'bg-red-500'}`}>
+                                {transaction.transaction_type === 4 ? (
                                     <span className="text-white text-lg">+</span>
                                 ) : (
                                     <span className="text-white text-lg">-</span>
@@ -90,7 +90,8 @@ export default function TransactionList() {
                                     Monto: ${transaction.amount}
                                 </p>
                                 <div className="text-left">
-                                    <p className="font-medium text-[#5fa8d3] flex gap-2 items-center">${transaction.balance_before} <CaretRight />{transaction.balance_after}</p>
+                                    {transaction.balance_before !== '0.00' || transaction.balance_after !== '0.00' ? <p className="font-medium text-[#5fa8d3] flex gap-2 items-center">${transaction.balance_before} <CaretRight />{transaction.balance_after}</p> : <></>}
+
                                     <p className="text-sm text-white">{ConvertDate(transaction.created_at)}</p>
                                 </div>
                             </div>

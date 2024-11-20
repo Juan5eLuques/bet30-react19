@@ -51,4 +51,7 @@ button {
   .scrollbar-none {
     scrollbar-width: none;
   }
+  .scrollbar-visible {
+    scrollbar-width: auto;
+  }
 }

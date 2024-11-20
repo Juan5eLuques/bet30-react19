@@ -27,7 +27,6 @@ const Card: FC<Props> = ({ href, title, src }) => {
           href={href}
           className="absolute text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         >
-          {/* SVG de Play */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="72"

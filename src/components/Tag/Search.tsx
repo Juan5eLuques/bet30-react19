@@ -10,7 +10,7 @@ const Search = () => {
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault(); // Prevenir el comportamiento de submit del formulario
-        if (searchQuery.trim()) {
+        if (searchQuery.toLocaleLowerCase().trim()) {
             router.push(`/casino/games/search/${encodeURIComponent(searchQuery)}`);
         }
     };
@@ -27,16 +27,10 @@ const Search = () => {
                         className="pl-2 flex items-center justify-center bg-[#0a1761] outline-none w-full text-sm"
                     />
                 </div>
-                <button type="submit" className="rounded-full px-4 py-2 w-1/4 xl:hidden xl:w-full">
+                <button type="submit" className="rounded-full px-4 py-2 w-1/4 xl:hidden xl:w-full bg-wallet-gradient">
                     Buscar
                 </button>
             </form>
-            <style jsx>{`
-                button {
-                    background: #0575e6;
-                    background: linear-gradient(to right, #021b79, #0575e6);
-                }
-            `}</style>
         </div>
     );
 };

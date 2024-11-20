@@ -24,8 +24,8 @@ export async function TagSlider({ context }: ProviderSliderProps) {
 
 
     return (
-        <div className="py-1">
-            <div className="scrollbar-none flex gap-1 pt-1 sm:gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-thin scrollbar-track-purple-900/10 scrollbar-thumb-purple-600/50 hover:scrollbar-thumb-purple-600/70">
+        <div className="py-1 w-full">
+            <div className="flex gap-1 pt-1 sm:gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none md:scrollbar-visible md:scrollbar-thin md:scrollbar-track-purple-900/10 md:scrollbar-thumb-purple-600/50 hover:scrollbar-thumb-purple-600/70 ">
                 {tagArray.map((tag, index) => (
                     <Tag context={context} index={index} tag={tag} key={tag.code}></Tag>
                 ))}

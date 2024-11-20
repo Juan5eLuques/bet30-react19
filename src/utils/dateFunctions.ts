@@ -7,6 +7,6 @@ const dia = String(fecha.getDate()).padStart(2, '0'); // Día
 const horas = String(fecha.getHours()).padStart(2, '0'); // Hora (24h)
 const minutos = String(fecha.getMinutes()).padStart(2, '0'); // Minutos
 
-return `${mes}/${dia} ${horas}, ${minutos}`
+return `${mes}/${dia}, ${horas}:${minutos}`
 
 }
