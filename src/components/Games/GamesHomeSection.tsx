@@ -8,14 +8,13 @@ import { getUrlsForSectionHome } from '@/utils/getUrlsForSectionHome';
 
 interface Props {
     nameSection: string;
-    hrefSection: string;
     gameList: GameList[];
     index: number;
 }
 
 
 
-const GamesHomeSection: React.FC<Props> = ({ nameSection, hrefSection, gameList, index = 0 }) => {
+const GamesHomeSection: React.FC<Props> = ({ nameSection, gameList, index = 0 }) => {
     // Función para seleccionar el icono basado en el index
     const RenderIcon = (index: number) => {
         switch (index) {

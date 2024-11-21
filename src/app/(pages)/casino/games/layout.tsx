@@ -18,7 +18,8 @@ export default async function Layout({
                 <Search />
             </div>
             {children}
-        </main></div>
+        </main>
+    </div>
 }
 
 

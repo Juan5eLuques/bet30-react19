@@ -22,7 +22,7 @@ export async function ProviderSlider({ IconElement, showTitle = true, context }:
                         Proveedores
                     </h2>
                 </div> : <></>}
-            <div className="flex gap-1 pt-1 sm:gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-thin scrollba scrollbar-track-purple-900/10 scrollbar-none scrollbar-thumb-purple-600/50 hover:scrollbar-thumb-purple-600/70 ">
+            <div className="flex gap-1 pt-1 sm:gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none md:scrollbar-visible md:scrollbar-thin scrollba scrollbar-track-purple-900/10 scrollbar-none scrollbar-thumb-purple-600/50 hover:scrollbar-thumb-purple-600/70 ">
                 {providers.map((provider) => (
                     <Provider context={context} code={provider.code} gameCode={provider.gameCode} name={provider.name} sortOrder={provider.sortOrder} key={provider.code}></Provider>
                 ))}

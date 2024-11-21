@@ -9,7 +9,7 @@ export default async function GamesHome() {
     return (
         <section className="flex w-full justify-between flex-col mb-2">
             {Object.entries(games).map(([groupName, gameList], index) => (
-                <GamesHomeSection key={groupName} hrefSection={`casino/games/tag/top`} nameSection={groupName} gameList={gameList} index={index}></GamesHomeSection>
+                <GamesHomeSection key={groupName} nameSection={groupName} gameList={gameList} index={index}></GamesHomeSection>
             ))}
         </section>
     );

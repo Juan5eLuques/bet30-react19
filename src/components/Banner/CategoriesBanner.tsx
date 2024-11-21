@@ -21,7 +21,7 @@ export default async function CategoriesBanner() {
                         text="Slots"
                     />
                 </Link>
-                <Link href="/live-casino">
+                <Link href="/live-casino/games/tag/all">
                     <ItemBanner
                         urlBg="/images/categories-banner/live.png"
                         text="En vivo"
